@@ -1,10 +1,22 @@
 .App {
   text-align: center;
+  display: flex;
+  background-color: #282c34;
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;left: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidemenu {
+  width: 240px;
+  border: 1px solid white;
+}
+
+.chatbox {
+  flex:1;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
