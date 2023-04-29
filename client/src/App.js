@@ -1,4 +1,5 @@
 
+import './normal.css';
 import './App.css';
 
 function App() {
