@@ -4,7 +4,7 @@ const  express  = require('express');
 
 const configuration = new Configuration({
     organization: "org-P8dnai1JRiA59yFOilnpa7aB",
-    apiKey: "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",
+    apiKey: "",
 });
 const openai = new OpenAIApi(configuration);
 //const response = await openai.listEngines();
