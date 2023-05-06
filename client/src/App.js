@@ -13,8 +13,8 @@ function App() {
     }
     ,
     {
-      user:"gpt",
-      message : "hi thinesh what do you nee"
+      user:"me",
+      message : "I'm using chatGPT"
     }
   ]);
 
@@ -27,6 +27,23 @@ function App() {
       message :  `${input}`
     }]);
     setInput("");
+    
+    const response = await fetch("http://localhost:3080/",{
+      method : "POST",
+      headers : {
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        message:chatLog.map((message)=>message.message).join("")
+      })
+    });
+    const data = await response.json();
+    setChatLog([...chatLog,{
+      user:"gpt",
+      message:`${data.message}`
+    }])
+    console.log(data);
+
   }
 
   return (
@@ -51,7 +68,7 @@ function App() {
           value={input}
           onChange={(e)=>setInput(e.target.value)}
           rows="1" className="chat-input-textarea" placeholder="Send a message."></input>
-          </form>
+        </form>
       </div>
       </section>
     </div>
@@ -61,9 +78,9 @@ function App() {
 
 const ChatMessage = ({message})=>{
   return (
-  <div className="chat-message">
+  <div className={`chat-message ${message.user ==="gpt" && "chatgpt"}`}>
               <div className="chat-message-center">
-                <div className="avatar">
+                <div className={`avatar ${message.user ==="gpt" && "chatgpt"}`}>
                   
                 </div>
                 <div className="message">
